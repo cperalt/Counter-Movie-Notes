@@ -1,17 +1,20 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes , Route } from "react-router-dom";
+import Counter from "./Pages/Counter"
+import Nav from "./Components/Nav.jsx"
+import MovieApp from './Pages/Movie-App/Movie.jsx';
+import ToDoApp from "./Pages/ToDoApp/ToDoApp.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 className='text-yellow-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Counter />} />
+        <Route path="movie-app" element={<MovieApp />} />
+        <Route path="to-do" element={<ToDoApp />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
